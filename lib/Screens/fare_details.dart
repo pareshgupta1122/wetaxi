@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wetaxi/Screens/cab_booked_screen.dart';
 
 class FareDetailsScreen extends StatefulWidget {
   @override
@@ -503,34 +504,44 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                   ),
                   Expanded(
                     flex: 8,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: pHeight * 0.1,
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset.zero,
-                                color: Colors.grey,
-                                blurRadius: 20,
-                                spreadRadius: 2)
-                          ],
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(pHeight * 0.05))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            'Confirm Ride',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CabBookedScreen(),
                           ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Colors.white,
-                          )
-                        ],
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: pHeight * 0.1,
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset.zero,
+                                  color: Colors.grey,
+                                  blurRadius: 20,
+                                  spreadRadius: 2)
+                            ],
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(pHeight * 0.05))),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              'Confirm Ride',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),

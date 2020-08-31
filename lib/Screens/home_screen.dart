@@ -3,7 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:wetaxi/Screens/coupons_screen.dart';
+import 'package:wetaxi/Screens/emergency_number_screen.dart';
 import 'package:wetaxi/Screens/fare_details.dart';
+import 'package:wetaxi/Screens/refer_and_earn_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -27,37 +30,17 @@ class _HomeScreenState extends State<HomeScreen> {
   void getStatus() async {
     var status = await Permission.location.status;
     if (await Permission.location.request().isGranted) {
-      print('hahahaha--------------------');
+      print('Permission Granted');
 
       // Either the permission was already granted before or the user just granted it.
     } else {
-      print('hihiihi---------------------');
+      print('Permission Denied');
     }
     if (await Permission.locationWhenInUse.request().isGranted) {
-      print('hahahaha--------------------');
-
-      // Either the permission was already granted before or the user just granted it.
+      print('Permission Granted');
     } else {
-      print('hihiihi---------------------');
+      print('Permission Denied');
     }
-// You can request multiple permissions at once.
-
-    if (status.isUndetermined) {
-      // We didn't ask for permission yet.
-    }
-
-// You can can also directly ask the permission about its status.
-    if (await Permission.location.isRestricted) {
-      // The OS restricts access, for example because of parental controls.
-    }
-  }
-
-  getPermi() async {
-    print(
-        '===================================================================');
-    Map<Permission, PermissionStatus> statuses =
-        await [Permission.location, Permission.locationWhenInUse].request();
-    print(statuses[Permission.location]);
   }
 
   int toggle1 = 1;
@@ -65,7 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int toggle3 = 0;
   @override
   void initState() {
-    // getPermi();
     getStatus();
 
     super.initState();
@@ -91,29 +73,142 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           height: pHeight,
           width: pWidth * 0.8,
-          color: Colors.red,
+          color: Color(0xFF0D3A7E).withOpacity(0.7),
           child: ListView(
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                child: Text('Drawer Header'),
+                child: Container(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.asset(
+                          'assets/driver.png',
+                          height: pHeight * 0.1,
+                          fit: BoxFit.fill,
+                        ),
+                        Container(
+                          height: pHeight * 0.13,
+                          width: pWidth * 0.35,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Aviral Agarwal',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: pHeight * 0.03),
+                              ),
+                              Spacer(),
+                              Text(
+                                '@email',
+                                style: TextStyle(
+                                    color: Colors.white.withOpacity(0.8),
+                                    fontSize: pHeight * 0.02),
+                              ),
+                              Text(
+                                '@phone number',
+                                style: TextStyle(
+                                    color: Colors.white.withOpacity(0.8),
+                                    fontSize: pHeight * 0.02),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                )),
                 decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
+                    image: DecorationImage(
+                        image: AssetImage('assets/bg_drawer.png'),
+                        fit: BoxFit.fill)),
               ),
               ListTile(
-                title: Text('Item 1'),
+                leading: Icon(
+                  Icons.clear_all,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  'All Trips',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
+                  Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text('Item 2'),
+                leading: Icon(
+                  Icons.contact_phone,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  'Emergency Number',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EmergencyNumberScreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.card_giftcard,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  'Coupons',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CouponsScreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.stars,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  'Refer and Earn',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.camera,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  'Support',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.info_outline,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  'About Us',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
                 },
               ),
             ],
