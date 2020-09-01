@@ -6,141 +6,163 @@ class EmergencyNumberScreen extends StatefulWidget {
 }
 
 class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
+  TextEditingController phone = new TextEditingController(text: '+91');
+
   @override
   Widget build(BuildContext context) {
+    final pHeight = MediaQuery.of(context).size.height;
+    final pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Emergency Number',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.notifications_none,
-              color: Colors.white,
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: <Widget>[
+          Positioned(
+            top: 0,
+            left: 0,
+            child: Image.asset(
+              'assets/bg_drawer.png',
+              height: pHeight * 0.1,
+              width: pWidth,
+              fit: BoxFit.cover,
             ),
           ),
-        ],
-        flexibleSpace: Container(
-          decoration: new BoxDecoration(
-            color: Color.fromRGBO(212, 56, 57, 1),
-          ),
-        ),
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.42,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset('assets/emergency_screen_asset.png'),
-                  SizedBox(
-                    height: 25.0,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: pHeight * 0.045,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    Container(
+                      child: Center(
+                        child: Text(
+                          'Emergency number',
+                          style: TextStyle(
+                              color: Colors.white, fontSize: pHeight * 0.025),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.notifications,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: pHeight * 0.08,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.asset(
+                    'assets/emergency.png',
+                    scale: 2.5,
                   ),
-                  Text(
-                    'Add two emergency contact numbers',
-                    style: TextStyle(
-                      color: Colors.black54,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Center(
+                    child: Text(
+                      'Add two emergency contact numbers',
+                      style: TextStyle(fontSize: pHeight * 0.025),
                     ),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.1,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 30.0, right: 30.0, top: 8.0, bottom: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+                ),
+                SizedBox(
+                  height: pHeight * 0.02,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
                     Icon(
                       Icons.phone,
                       color: Colors.green,
-                      size: MediaQuery.of(context).size.height * 0.05,
+                      size: pHeight * 0.035,
                     ),
-                    Text('9876543210',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0,
-                        ))
+                    SizedBox(
+                      width: pWidth * 0.1,
+                    ),
+                    Text(
+                      '+91 9876543210',
+                      style: TextStyle(fontSize: pHeight * 0.03),
+                    ),
                   ],
                 ),
-              ),
-            ),
-            Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
+                SizedBox(
+                  height: pHeight * 0.1,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
                     Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white24,
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Text(
-                          '+91',
-                          style: TextStyle(),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white24,
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              '  Enter Mobile Number  ',
-                              style: TextStyle(),
+                      width: pWidth * 0.9,
+                      child: TextFormField(
+                        controller: phone,
+                        decoration: InputDecoration(
+                          hintText: 'Mobile Number',
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              Icons.contacts,
+                              color: Colors.black,
                             ),
-                            Icon(Icons.book)
-                          ],
+                          ),
+                          filled: true,
+                          fillColor: Colors.black.withOpacity(0.15),
                         ),
                       ),
                     ),
                   ],
-                )),
-            Expanded(
-                child: Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25.0),
-                  color: Colors.red,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 55.0, right: 55.0, top: 10.0, bottom: 10.0),
-                  child: Text('Save',
+                SizedBox(
+                  height: pHeight * 0.15,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: Color.fromRGBO(179, 57, 51, 1),
+                  ),
+                  //UIColor(red: 179/255, green: 57/255, blue: 51/255)
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 15.0,
+                      bottom: 15.0,
+                      left: 60.0,
+                      right: 60.0,
+                    ),
+                    child: Text(
+                      'Save',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                        color: Colors.white,
-                      )),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: pHeight * 0.02),
+                    ),
+                  ),
                 ),
-              ),
-            )),
-          ],
-        ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
