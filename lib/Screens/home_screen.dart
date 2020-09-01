@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:wetaxi/Screens/all_trips.dart';
 import 'package:wetaxi/Screens/coupons_screen.dart';
 import 'package:wetaxi/Screens/emergency_number_screen.dart';
 import 'package:wetaxi/Screens/fare_details.dart';
@@ -138,7 +139,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AllTrips(),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -181,7 +187,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ReferAndEarnScreen(),
+                    ),
+                  );
                 },
               ),
               ListTile(
