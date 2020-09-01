@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:wetaxi/Screens/cab_booked_screen.dart';
 
 class FareDetailsScreen extends StatefulWidget {
@@ -54,8 +56,10 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                     children: [
                       Text(
                         'Cab Booking',
-                        style: TextStyle(
-                            color: Colors.white, fontSize: pHeight * 0.025),
+                        style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: pHeight * 0.025),
                       ),
                     ],
                   ),
@@ -64,27 +68,30 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                   color: Colors.transparent,
                   child: Row(
                     children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
+                      Spacer(),
+                      InkWell(
+                          child: Image.asset(
+                            'assets/return1.png',
+                            height: pHeight * 0.03,
+                          ),
+                          onTap: () {
+                            Navigator.pop(context);
+                          }),
                       Spacer(),
                       Text(
                         'Trade Center ',
-                        style: TextStyle(color: Colors.white),
+                        style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: pHeight * 0.02),
                       ),
                       Icon(
                         Icons.more_horiz,
                         color: Colors.white,
                       ),
-                      Icon(
-                        Icons.sync,
-                        color: Colors.white,
+                      Image.asset(
+                        'assets/swap_trans.png',
+                        height: pHeight * 0.025,
                       ),
                       Icon(
                         Icons.more_horiz,
@@ -92,9 +99,12 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                       ),
                       Text(
                         ' Home',
-                        style: TextStyle(color: Colors.white),
+                        style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: pHeight * 0.02),
                       ),
-                      Spacer(),
+                      Spacer(flex: 3),
                     ],
                   ),
                 ),
@@ -117,6 +127,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
+                                Spacer(),
                                 Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
@@ -125,7 +136,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                       padding: const EdgeInsets.only(left: 5),
                                       child: Text(
                                         "Service Type",
-                                        style: TextStyle(
+                                        style: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ),
@@ -138,7 +149,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                           ),
                                           Text(
                                             "Comfort",
-                                            style: TextStyle(
+                                            style: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 16),
                                           ),
@@ -147,6 +158,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                     ),
                                   ],
                                 ),
+                                Spacer(flex: 5),
                                 Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
@@ -155,26 +167,27 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                     Spacer(),
                                     Text(
                                       "Approx.Total Fare",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       "including Fare",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w200,
                                           fontSize: 13),
                                     ),
                                     Spacer(),
                                     Text(
                                       "\$17.5",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                           color: Color.fromRGBO(212, 56, 57, 1),
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 30),
+                                          fontSize: pHeight * 0.03),
                                     ),
                                     Spacer()
                                   ],
                                 ),
+                                Spacer(),
                               ],
                             ),
                           ),
@@ -185,7 +198,6 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                           shadowColor: Colors.black,
                           elevation: 10,
                           child: Container(
-                            // color: Colors.cyan,
                             width: MediaQuery.of(context).size.width * 0.97,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -198,6 +210,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
+                                    Spacer(),
                                     Container(
                                       width: pWidth * 0.5,
                                       child: Column(
@@ -206,7 +219,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                         children: [
                                           Text(
                                             "Add Ons",
-                                            style: TextStyle(
+                                            style: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.grey[850]),
                                           ),
@@ -217,48 +230,134 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              CircleAvatar(
-                                                radius: 24,
-                                                backgroundColor: Colors.grey,
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              pHeight * 0.02)),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        offset: Offset.zero,
+                                                        color: Colors.black
+                                                            .withOpacity(0.4),
+                                                        blurRadius: 10,
+                                                        spreadRadius: 1)
+                                                  ],
+                                                ),
                                                 child: CircleAvatar(
-                                                  radius: 20,
-                                                  backgroundColor: Colors.white,
-                                                  foregroundColor: Colors.black,
-                                                  child: Text(
-                                                    "None",
-                                                    style: TextStyle(
-                                                        fontSize: 13,
-                                                        color: Colors.grey[850],
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  radius: 24,
+                                                  backgroundColor: Colors.grey,
+                                                  child: CircleAvatar(
+                                                    radius: 20,
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                    foregroundColor:
+                                                        Colors.black,
+                                                    child: Text(
+                                                      "None",
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                              fontSize: 13,
+                                                              color:
+                                                                  Colors.grey,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                    ),
                                                   ),
                                                 ),
                                               ),
                                               Spacer(),
-                                              CircleAvatar(
-                                                radius: 24,
-                                                backgroundColor: Colors.grey,
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              pHeight * 0.02)),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        offset: Offset.zero,
+                                                        color: Colors.black
+                                                            .withOpacity(0.4),
+                                                        blurRadius: 10,
+                                                        spreadRadius: 1)
+                                                  ],
+                                                ),
                                                 child: CircleAvatar(
-                                                  radius: 20,
-                                                  backgroundColor:
-                                                      Color.fromRGBO(
-                                                          212, 56, 57, 1),
-                                                  foregroundColor: Colors.white,
-                                                  child: Icon(
-                                                      Icons.directions_walk),
+                                                  radius: pHeight * 0.025,
+                                                  backgroundColor: Colors.grey,
+                                                  child: CircleAvatar(
+                                                    radius: pHeight * 0.025,
+                                                    backgroundColor:
+                                                        Color.fromRGBO(
+                                                            212, 56, 57, 1),
+                                                    foregroundColor:
+                                                        Colors.white,
+                                                    child: Icon(
+                                                        Icons.directions_walk),
+                                                  ),
                                                 ),
                                               ),
                                               Spacer(),
-                                              CircleAvatar(
-                                                radius: 24,
-                                                backgroundColor: Colors.grey,
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              pHeight * 0.02)),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        offset: Offset.zero,
+                                                        color: Colors.black
+                                                            .withOpacity(0.4),
+                                                        blurRadius: 10,
+                                                        spreadRadius: 1)
+                                                  ],
+                                                ),
                                                 child: CircleAvatar(
-                                                  radius: 20,
-                                                  backgroundColor: Colors.white,
-                                                  // foregroundColor: Colors.grey,
-                                                  child: Icon(
-                                                    Icons.shopping_cart,
-                                                    color: Colors.grey[850],
+                                                  radius: 24,
+                                                  backgroundColor: Colors.grey,
+                                                  child: CircleAvatar(
+                                                    radius: 20,
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                    // foregroundColor: Colors.grey,
+                                                    child: Icon(
+                                                      Icons.shopping_cart,
+                                                      color: Colors.grey,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Spacer(),
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              pHeight * 0.02)),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        offset: Offset.zero,
+                                                        color: Colors.black
+                                                            .withOpacity(0.4),
+                                                        blurRadius: 10,
+                                                        spreadRadius: 1)
+                                                  ],
+                                                ),
+                                                child: CircleAvatar(
+                                                  radius: 24,
+                                                  backgroundColor: Colors.grey,
+                                                  child: CircleAvatar(
+                                                    radius: 20,
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                    // foregroundColor: Colors.grey,
+                                                    child: Image.asset(
+                                                        'assets/passenger.png',
+                                                        height:
+                                                            pHeight * 0.025),
                                                   ),
                                                 ),
                                               ),
@@ -267,37 +366,38 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                         ],
                                       ),
                                     ),
-
+                                    Spacer(flex: 2),
                                     Container(
-                                      width: pWidth * 0.3,
+                                      width: pWidth * 0.22,
                                       child: Column(
                                         // mainAxisAlignment:
                                         //     MainAxisAlignment.end,
-                                        // crossAxisAlignment:
-                                        //     CrossAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
                                         children: <Widget>[
                                           Text(
                                             "Wheel Chair",
-                                            style: TextStyle(
+                                            style: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(
                                             "charges extra",
-                                            style: TextStyle(
+                                            style: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.w100,
                                                 fontSize: 13),
                                           ),
                                           Text(
                                             "\$0.5",
-                                            style: TextStyle(
+                                            style: GoogleFonts.montserrat(
                                                 color: Color.fromRGBO(
                                                     212, 56, 57, 1),
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 30),
+                                                fontSize: pHeight * 0.03),
                                           ),
                                         ],
                                       ),
                                     ),
+                                    Spacer()
                                     // CircleAvatar(),
                                     // CircleAvatar(),
                                   ],
@@ -307,18 +407,19 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                 ),
                                 Center(
                                   child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.9,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.90,
                                     child: Padding(
                                       padding: EdgeInsets.only(
-                                          right: pWidth * 0.07,
+                                          right: pWidth * 0.03,
                                           left: pWidth * 0.03),
                                       child: Column(
                                         children: <Widget>[
                                           Divider(
                                             thickness: 1,
-                                            color: Colors.black,
+                                            color: Colors.grey,
                                           ),
+                                          SizedBox(height: pHeight * 0.015),
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -331,30 +432,54 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                                 children: <Widget>[
                                                   Text(
                                                     "Cancellation Charge",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20),
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20),
                                                   ),
                                                   Text(
                                                     "Cancellation charge for the your previous ",
                                                     style:
-                                                        TextStyle(fontSize: 12),
+                                                        GoogleFonts.montserrat(
+                                                            color: Colors.grey,
+                                                            fontSize: 12),
                                                   ),
-                                                  Text(
-                                                    "booking UKL2356P is charged extra",
-                                                    style:
-                                                        TextStyle(fontSize: 12),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        "booking ",
+                                                        style: GoogleFonts
+                                                            .montserrat(
+                                                                color:
+                                                                    Colors.grey,
+                                                                fontSize: 12),
+                                                      ),
+                                                      Text(
+                                                        "UKL2356P ",
+                                                        style: GoogleFonts
+                                                            .montserrat(
+                                                                fontSize: 12),
+                                                      ),
+                                                      Text(
+                                                        "is charged extra",
+                                                        style: GoogleFonts
+                                                            .montserrat(
+                                                                color:
+                                                                    Colors.grey,
+                                                                fontSize: 12),
+                                                      )
+                                                    ],
                                                   )
                                                 ],
                                               ),
                                               Text(
                                                 "\$2",
-                                                style: TextStyle(
+                                                style: GoogleFonts.montserrat(
                                                     color: Color.fromRGBO(
                                                         212, 56, 57, 1),
                                                     fontWeight: FontWeight.w500,
-                                                    fontSize: 30),
+                                                    fontSize: pHeight * 0.03),
                                               ),
                                             ],
                                           ),
@@ -388,7 +513,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                 children: <Widget>[
                                   Text(
                                     'Payment',
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.bold,
                                         fontSize: pHeight * 0.02),
                                   ),
@@ -401,6 +526,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                     children: [
                                       Container(
                                         width: pWidth * 0.3,
+                                        height: pHeight * 0.04,
                                         child: Container(
                                             decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.all(
@@ -426,6 +552,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                       ),
                                       Container(
                                         width: pWidth * 0.3,
+                                        height: pHeight * 0.04,
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(10),
@@ -434,6 +561,8 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                                 color: Colors.grey, width: 1)),
                                         child: TextField(
                                           cursorColor: Colors.black,
+                                          style: GoogleFonts.montserrat(
+                                              height: pHeight * 0.0005),
                                           decoration: new InputDecoration(
                                               border: InputBorder.none,
                                               focusedBorder: InputBorder.none,
@@ -442,6 +571,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                               disabledBorder: InputBorder.none,
                                               contentPadding: EdgeInsets.only(
                                                   left: pWidth * 0.01,
+                                                  bottom: pHeight * 0.01,
                                                   right: pWidth * 0.01),
                                               hintText: 'Apply Coupon'),
                                         ),
@@ -453,7 +583,8 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                   ),
                                   Text(
                                     "Above fare isn\'t inclusive of Tax. (Parking/Toll/Waiting Charges extra*",
-                                    style: TextStyle(fontSize: 13),
+                                    style: GoogleFonts.montserrat(
+                                        fontSize: pHeight * 0.012),
                                   ),
                                 ],
                               ),
@@ -467,8 +598,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                 children: [
                                   Card(
                                     shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
+                                        borderRadius: BorderRadius.circular(5)),
                                     shadowColor: Colors.black,
                                     elevation: 10,
                                     child: Container(
@@ -478,7 +608,9 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                         child: Row(
                                           children: [
                                             Icon(Icons.calendar_today),
-                                            Text(' Thu, Apr 13 (2020)'),
+                                            Text(' Thu, Apr 13 (2020)',
+                                                style:
+                                                    GoogleFonts.montserrat()),
                                           ],
                                         ),
                                       ),
@@ -486,8 +618,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                   ),
                                   Card(
                                     shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
+                                        borderRadius: BorderRadius.circular(5)),
                                     shadowColor: Colors.black,
                                     elevation: 10,
                                     child: Container(
@@ -497,7 +628,9 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                                         child: Row(
                                           children: [
                                             Icon(Icons.timer),
-                                            Text(' 3:30 P.M.'),
+                                            Text(' 3:30 P.M.',
+                                                style:
+                                                    GoogleFonts.montserrat()),
                                           ],
                                         ),
                                       ),
@@ -511,12 +644,21 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                   ),
                 ),
                 Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          offset: Offset.zero,
+                          color: Colors.grey,
+                          blurRadius: 20,
+                          spreadRadius: 2)
+                    ],
+                  ),
                   width: pWidth * 0.9,
                   height: pHeight * 0.07,
-                  child: Row(
+                  child: Stack(
                     children: [
-                      Expanded(
-                        flex: 8,
+                      Positioned(
+                        left: 0,
                         child: InkWell(
                           onTap: () {
                             if (scheduleToggle == 0)
@@ -532,28 +674,19 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                           },
                           child: Container(
                             alignment: Alignment.center,
-                            height: pHeight * 0.1,
+                            height: pHeight * 0.06,
+                            width: pWidth * 0.5,
                             decoration: BoxDecoration(
                                 color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      offset: Offset.zero,
-                                      color: Colors.grey,
-                                      blurRadius: 20,
-                                      spreadRadius: 2)
-                                ],
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(pHeight * 0.05))),
-                            child: Text('Schedule Ride'),
+                            child: Text('Schedule Ride',
+                                style: GoogleFonts.montserrat()),
                           ),
                         ),
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(),
-                      ),
-                      Expanded(
-                        flex: 8,
+                      Positioned(
+                        right: 0,
                         child: InkWell(
                           onTap: () {
                             Navigator.push(
@@ -565,16 +698,10 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                           },
                           child: Container(
                             alignment: Alignment.center,
-                            height: pHeight * 0.1,
+                            height: pHeight * 0.06,
+                            width: pWidth * 0.5,
                             decoration: BoxDecoration(
                                 color: Colors.red,
-                                boxShadow: [
-                                  BoxShadow(
-                                      offset: Offset.zero,
-                                      color: Colors.grey,
-                                      blurRadius: 20,
-                                      spreadRadius: 2)
-                                ],
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(pHeight * 0.05))),
                             child: Row(
@@ -582,7 +709,7 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
                               children: [
                                 Text(
                                   'Confirm Ride',
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
                                 ),

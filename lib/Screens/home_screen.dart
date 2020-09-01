@@ -54,23 +54,28 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
+    var cxt = context;
     double pHeight = MediaQuery.of(context).size.height;
     double pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red.withOpacity(0.7),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.notifications,
-              color: Colors.white,
-            ),
-          )
-        ],
-      ),
+      // key: _drawerKey,
+      key: _drawerKey,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   actions: [
+      //     IconButton(
+      //       icon: Icon(
+      //         Icons.notifications,
+      //         color: Colors.white,
+      //       ),
+      //     )
+      //   ],
+      // ),
       drawer: Drawer(
+        // key: _drawerKey,
         child: Container(
           height: pHeight,
           width: pWidth * 0.8,
@@ -246,8 +251,40 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: pHeight * 0.02,
                   ),
                   Container(
+                    height: pHeight * 0.05,
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: InkWell(
+                            onTap: () {
+                              _drawerKey.currentState.openDrawer();
+                            },
+                            child: Icon(Icons.menu),
+                          ),
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.notifications,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
                     width: pWidth * 0.8,
                     decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
@@ -300,6 +337,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     width: pWidth * 0.8,
                     decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
@@ -400,6 +445,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           'Comfort',
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: toggle1 == 1
                                                   ? Colors.white
                                                   : Colors.black),
@@ -441,6 +487,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           'Comfort',
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: toggle1 == 1
                                                   ? Colors.white
                                                   : Colors.black),
@@ -481,6 +528,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           'Comfort XL',
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: toggle2 == 1
                                                   ? Colors.white
                                                   : Colors.black),
@@ -522,6 +570,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           'Comfort XL',
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: toggle2 == 1
                                                   ? Colors.white
                                                   : Colors.black),
@@ -562,6 +611,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           'Executive',
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: toggle3 == 1
                                                   ? Colors.white
                                                   : Colors.black),
@@ -603,6 +653,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           'Executive',
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: toggle3 == 1
                                                   ? Colors.white
                                                   : Colors.black),
@@ -642,23 +693,37 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: pWidth * 0.2,
                             height: pHeight * 0.04,
                             decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  ),
+                                ],
                                 border: Border.all(width: 2, color: Colors.red),
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(pHeight * 0.02))),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
+                                Spacer(flex: 3),
                                 Text(
                                   'Get Fare',
                                   style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                       fontSize: pWidth * 0.03,
                                       color: Colors.red),
                                 ),
+                                Spacer(),
                                 Icon(
                                   Icons.arrow_forward_ios,
                                   size: pWidth * 0.04,
                                   color: Colors.red,
-                                )
+                                ),
+                                Spacer(),
                               ],
                             ),
                           ),
@@ -667,6 +732,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   )
                 ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: pHeight * 0.16,
+            left: pWidth * 0.83,
+            child: Container(
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ]),
+              child: Image.asset(
+                'assets/swap.png',
+                height: pHeight * 0.04,
               ),
             ),
           )
