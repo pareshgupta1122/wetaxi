@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EmergencyNumberScreen extends StatefulWidget {
   @override
@@ -39,24 +43,17 @@ class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
+                    Spacer(flex: 2),
                     Container(
                       child: Center(
                         child: Text(
                           'Emergency number',
-                          style: TextStyle(
+                          style: GoogleFonts.montserrat(
                               color: Colors.white, fontSize: pHeight * 0.025),
                         ),
                       ),
                     ),
+                    Spacer(),
                     IconButton(
                       icon: Icon(
                         Icons.notifications,
@@ -81,7 +78,8 @@ class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
                   child: Center(
                     child: Text(
                       'Add two emergency contact numbers',
-                      style: TextStyle(fontSize: pHeight * 0.025),
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.montserrat(fontSize: pHeight * 0.02),
                     ),
                   ),
                 ),
@@ -101,7 +99,7 @@ class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
                     ),
                     Text(
                       '+91 9876543210',
-                      style: TextStyle(fontSize: pHeight * 0.03),
+                      style: GoogleFonts.montserrat(fontSize: pHeight * 0.03),
                     ),
                   ],
                 ),
@@ -109,28 +107,51 @@ class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
                   height: pHeight * 0.1,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      width: pWidth * 0.1,
+                    ),
                     Container(
-                      width: pWidth * 0.9,
-                      child: TextFormField(
-                        controller: phone,
-                        decoration: InputDecoration(
-                          hintText: 'Mobile Number',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              Icons.contacts,
-                              color: Colors.black,
-                            ),
-                          ),
-                          filled: true,
-                          fillColor: Colors.black.withOpacity(0.15),
-                        ),
+                      width: pWidth * 0.15,
+                      height: pHeight * 0.05,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blueGrey, width: 1),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: Text(
+                        '+91',
+                        style: TextStyle(fontSize: pHeight * 0.02),
                       ),
+                    ),
+                    SizedBox(
+                      width: pWidth * 0.05,
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      width: pWidth * 0.6,
+                      height: pHeight * 0.05,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blueGrey, width: 1),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: TextField(
+                        cursorColor: Colors.black,
+                        decoration: new InputDecoration(
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.only(
+                                left: pWidth * 0.02,
+                                bottom: pHeight * 0.015,
+                                top: pHeight * 0.02,
+                                right: pWidth * 0.02),
+                            hintText: 'Enter Your Number'),
+                      ),
+                    ),
+                    SizedBox(
+                      width: pWidth * 0.1,
                     ),
                   ],
                 ),
@@ -152,7 +173,7 @@ class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
                     ),
                     child: Text(
                       'Save',
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                           fontSize: pHeight * 0.02),

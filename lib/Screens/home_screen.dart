@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wetaxi/Screens/all_trips.dart';
@@ -61,173 +63,271 @@ class _HomeScreenState extends State<HomeScreen> {
     double pHeight = MediaQuery.of(context).size.height;
     double pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      // key: _drawerKey,
       key: _drawerKey,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   actions: [
-      //     IconButton(
-      //       icon: Icon(
-      //         Icons.notifications,
-      //         color: Colors.white,
-      //       ),
-      //     )
-      //   ],
-      // ),
-      drawer: Drawer(
-        // key: _drawerKey,
-        child: Container(
-          height: pHeight,
-          width: pWidth * 0.8,
-          color: Color(0xFF0D3A7E).withOpacity(0.7),
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Container(
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.transparent,
+        ),
+        child: SizedBox(
+          width: pWidth,
+          child: Drawer(
+            // key: _drawerKey,
+            child: Container(
+              height: pHeight,
+              color: Color(0xFF0D3A7E).withOpacity(0.7),
+              child: ListView(
+                // Important: Remove any padding from the ListView.
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  DrawerHeader(
+                    child: Container(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Image.asset(
-                          'assets/driver.png',
-                          height: pHeight * 0.1,
-                          fit: BoxFit.fill,
-                        ),
-                        Container(
-                          height: pHeight * 0.13,
-                          width: pWidth * 0.35,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Aviral Agarwal',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: pHeight * 0.03),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Image.asset(
+                              'assets/driver.png',
+                              height: pHeight * 0.1,
+                              fit: BoxFit.fill,
+                            ),
+                            Container(
+                              height: pHeight * 0.15,
+                              width: pWidth * 0.35,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Spacer(),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Icon(
+                                          Icons.arrow_back,
+                                          color: Colors.white,
+                                          size: pWidth * 0.07,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Spacer(flex: 3),
+                                  Text(
+                                    'Aviral Agarwal',
+                                    style: GoogleFonts.montserrat(
+                                        color: Colors.white,
+                                        fontSize: pHeight * 0.02),
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    '@email',
+                                    style: GoogleFonts.montserrat(
+                                        color: Colors.white.withOpacity(0.8),
+                                        fontSize: pHeight * 0.015),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '@phone number',
+                                        style: GoogleFonts.montserrat(
+                                            color:
+                                                Colors.white.withOpacity(0.8),
+                                            fontSize: pHeight * 0.015),
+                                      ),
+                                      Spacer(),
+                                      Icon(
+                                        Icons.edit,
+                                        color: Colors.white,
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
-                              Spacer(),
-                              Text(
-                                '@email',
-                                style: TextStyle(
-                                    color: Colors.white.withOpacity(0.8),
-                                    fontSize: pHeight * 0.02),
-                              ),
-                              Text(
-                                '@phone number',
-                                style: TextStyle(
-                                    color: Colors.white.withOpacity(0.8),
-                                    fontSize: pHeight * 0.02),
-                              )
-                            ],
-                          ),
+                            )
+                          ],
                         )
                       ],
-                    )
-                  ],
-                )),
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/bg_drawer.png'),
-                        fit: BoxFit.fill)),
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.clear_all,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'All Trips',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => AllTrips(),
-                  //   ),
-                  // );
-                },
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.contact_phone,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Emergency Number',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => EmergencyNumberScreen()));
-                },
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.card_giftcard,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Coupons',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CouponsScreen()));
-                },
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.stars,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Refer and Earn',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ReferAndEarnScreen(),
+                    )),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/bg_drawer.png'),
+                            fit: BoxFit.fill)),
+                  ),
+                  SizedBox(
+                    height: pHeight * 0.1,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 40),
+                          child: Icon(
+                            Icons.clear_all,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'All Trips',
+                          style: GoogleFonts.montserrat(color: Colors.white),
+                        ),
+                      ]),
                     ),
-                  );
-                },
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EmergencyNumberScreen()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 40),
+                          child: Icon(
+                            Icons.contact_phone,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Emergency Number',
+                          style: GoogleFonts.montserrat(color: Colors.white),
+                        ),
+                      ]),
+                    ),
+                  ),
+                  SizedBox(
+                    height: pHeight * 0.05,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CouponsScreen()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 40),
+                          child: Icon(
+                            Icons.card_giftcard,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Coupons',
+                          style: GoogleFonts.montserrat(color: Colors.white),
+                        ),
+                      ]),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ReferAndEarnScreen()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 40),
+                          child: Icon(
+                            Icons.stars,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Refer and Earn',
+                          style: GoogleFonts.montserrat(color: Colors.white),
+                        ),
+                      ]),
+                    ),
+                  ),
+                  SizedBox(
+                    height: pHeight * 0.05,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 40),
+                          child: Icon(
+                            Icons.camera,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Support',
+                          style: GoogleFonts.montserrat(color: Colors.white),
+                        ),
+                      ]),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 40),
+                          child: Icon(
+                            Icons.info_outline,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'About Us',
+                          style: GoogleFonts.montserrat(color: Colors.white),
+                        ),
+                      ]),
+                    ),
+                  ),
+                  SizedBox(
+                    height: pHeight * 0.2,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 40),
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Log Out',
+                          style: GoogleFonts.montserrat(color: Colors.white),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ],
               ),
-              ListTile(
-                leading: Icon(
-                  Icons.camera,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Support',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.info_outline,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'About Us',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
-                },
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -381,7 +481,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     bottom: pHeight * 0.015,
                                     top: pHeight * 0.02,
                                     right: pWidth * 0.02),
-                                hintText: 'Go from?'),
+                                hintText: 'Go to?'),
                           ),
                         ),
                         Icon(
@@ -444,7 +544,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         Text(
                                           'Comfort',
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.bold,
                                               color: toggle1 == 1
                                                   ? Colors.white
@@ -486,7 +586,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         Text(
                                           'Comfort',
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.bold,
                                               color: toggle1 == 1
                                                   ? Colors.white
@@ -527,7 +627,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         Text(
                                           'Comfort XL',
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.bold,
                                               color: toggle2 == 1
                                                   ? Colors.white
@@ -569,7 +669,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         Text(
                                           'Comfort XL',
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.bold,
                                               color: toggle2 == 1
                                                   ? Colors.white
@@ -610,7 +710,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         Text(
                                           'Executive',
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.bold,
                                               color: toggle3 == 1
                                                   ? Colors.white
@@ -652,7 +752,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         Text(
                                           'Executive',
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.bold,
                                               color: toggle3 == 1
                                                   ? Colors.white
@@ -712,7 +812,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Spacer(flex: 3),
                                 Text(
                                   'Get Fare',
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                       fontWeight: FontWeight.bold,
                                       fontSize: pWidth * 0.03,
                                       color: Colors.red),

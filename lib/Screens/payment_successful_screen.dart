@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:wetaxi/Screens/home_screen.dart';
 
 class PaymentSuccessfulScreen extends StatefulWidget {
@@ -10,6 +13,7 @@ class PaymentSuccessfulScreen extends StatefulWidget {
 class _PaymentSuccessfulScreenState extends State<PaymentSuccessfulScreen> {
   @override
   Widget build(BuildContext context) {
+    double pHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -22,12 +26,23 @@ class _PaymentSuccessfulScreenState extends State<PaymentSuccessfulScreen> {
             Image.asset('assets/mini.png'),
             Text('Comfort'),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-            Text(
-              '\$ 21.4',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 22.0,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  '\$',
+                  style: GoogleFonts.montserrat(
+                    fontSize: pHeight * 0.025,
+                  ),
+                ),
+                Text(
+                  ' 21.4',
+                  style: GoogleFonts.montserrat(
+                    fontSize: pHeight * 0.04,
+                  ),
+                ),
+              ],
             ),
             Text('(inclusive of Tax)'),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
@@ -49,13 +64,18 @@ class _PaymentSuccessfulScreenState extends State<PaymentSuccessfulScreen> {
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Text(
               'Paid Successfully',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15.0,
+              style: GoogleFonts.montserrat(
+                fontWeight: FontWeight.w600,
+                fontSize: pHeight * 0.02,
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-            Text('Thank you for chossing us !'),
+            Text(
+              'Thank you for chossing us !',
+              style: GoogleFonts.montserrat(
+                fontSize: pHeight * 0.02,
+              ),
+            ),
             Spacer(),
             GestureDetector(
               onTap: () {
@@ -84,7 +104,7 @@ class _PaymentSuccessfulScreenState extends State<PaymentSuccessfulScreen> {
                   ),
                   child: Text(
                     'Close',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

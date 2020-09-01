@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ReferAndEarnScreen extends StatefulWidget {
   @override
@@ -15,7 +19,7 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
 //      appBar: AppBar(
 //        title: Text(
 //          'Refer and Earn',
-//          style: TextStyle(color: Colors.white),
+//          style: GoogleFonts.montserrat()(color: Colors.white),
 //        ),
 //        centerTitle: true,
 //        leading: GestureDetector(
@@ -62,24 +66,19 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                    Spacer(
+                      flex: 2,
                     ),
                     Container(
                       child: Center(
                         child: Text(
                           'Refer and Earn',
-                          style: TextStyle(
+                          style: GoogleFonts.montserrat(
                               color: Colors.white, fontSize: pHeight * 0.025),
                         ),
                       ),
                     ),
+                    Spacer(),
                     IconButton(
                       icon: Icon(
                         Icons.notifications,
@@ -105,7 +104,7 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
                   child: Center(
                     child: Text(
                       'Refer a friend and earn coupon for \n      10% OFF upto \$ 100 on ride',
-                      style: TextStyle(fontSize: pHeight * 0.025),
+                      style: GoogleFonts.montserrat(fontSize: pHeight * 0.02),
                     ),
                   ),
                 ),
@@ -127,7 +126,7 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
                     ),
                     child: Text(
                       'Refer Now',
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
