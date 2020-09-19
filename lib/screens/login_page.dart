@@ -1,8 +1,13 @@
+import 'dart:io';
+
+import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
-import 'package:wetaxi/Screens/intro_screens.dart';
+import 'package:flutter/services.dart';
 import 'package:wetaxi/Screens/otp_screen.dart';
 import 'package:wetaxi/Screens/signup_page.dart';
-import 'package:wetaxi/main.dart';
+import 'package:wetaxi/data/network/api_helper.dart';
+import 'package:wetaxi/impl/impl.dart';
+import 'package:wetaxi/services/size_config.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,13 +16,20 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    double pHeight = MediaQuery.of(context).size.height;
-    double pWidth = MediaQuery.of(context).size.width;
+    final pHeight = MediaQuery.of(context).size.height;
+    final pWidth = MediaQuery.of(context).size.width;
+
+    SizeConfig().init(context);
     return Scaffold(
         body: Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
+      height: SizeConfig.blockSizeHeight * 100,
+      width: MediaQuery.of(context).size.width * 100,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
@@ -116,6 +128,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             InkWell(
               onTap: () {
+//                getPlatform();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
