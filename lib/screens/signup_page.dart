@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:wetaxi/constants/endpoints.dart';
 import 'package:wetaxi/data/network/api_helper.dart';
 import 'package:wetaxi/services/size_config.dart';
-import '../services/utilities/validators.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -99,7 +98,8 @@ class _SignUpPageState extends State<SignUpPage> {
         "x-device-os": "Android",
       };
 
-//      apiHelper.postWithHeaders(Endpoints.registerCustomer, register, header);
+      apiHelper.postWithHeadersInputs(
+          Endpoints.registerCustomer, register, header);
     }
 
     Widget verifyButton() {
