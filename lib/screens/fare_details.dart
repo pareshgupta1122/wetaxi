@@ -32,15 +32,10 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
 //      ),
       body: Stack(
         children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset(
-              'assets/bg_drawer.png',
-              height: pHeight * 0.2,
-              width: pWidth,
-              fit: BoxFit.cover,
-            ),
+          Container(
+
+            color: Color.fromRGBO(211, 57, 51, 1),
+            height: pHeight*0.2,
           ),
           Container(
             height: pHeight,
@@ -48,21 +43,42 @@ class _FareDetailsScreenState extends State<FareDetailsScreen> {
             child: Column(
               children: [
                 SizedBox(height: pHeight * 0.03),
-                Container(
-                  height: pHeight * 0.1,
-                  color: Colors.transparent,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Cab Booking',
-                        style: GoogleFonts.montserrat(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: pHeight * 0.025),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
                       ),
-                    ],
-                  ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    Container(
+                      height: pHeight * 0.1,
+                      color: Colors.transparent,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Local Booking',
+                            style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: pHeight * 0.025),
+                          ),
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.notifications,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
                 ),
                 Container(
                   color: Colors.transparent,

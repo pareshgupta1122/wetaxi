@@ -3,18 +3,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wetaxi/services/size_config.dart';
 
-class ReferAndEarnScreen extends StatefulWidget {
+class SupportPage extends StatefulWidget {
+
   @override
-  _ReferAndEarnScreenState createState() => _ReferAndEarnScreenState();
+  _SupportPageState createState() => _SupportPageState();
 }
 
-class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
+class _SupportPageState extends State<SupportPage> {
+
   @override
   Widget build(BuildContext context) {
     final pHeight = MediaQuery.of(context).size.height;
     final pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+
       backgroundColor: Colors.white,
 //      appBar: AppBar(
 //        title: Text(
@@ -42,6 +46,7 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
 //        ),
 //      ),
       body: Stack(
+
         children: <Widget>[
           Container(
             color: Color.fromRGBO(211, 57, 51, 1),
@@ -55,7 +60,7 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: pHeight * 0.045,
+                  height: pHeight * 0.07,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -72,10 +77,11 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
                     Container(
                       child: Center(
                         child: Text(
-                          'Refer and Earn',
+                          'Support & FAQ',
                           style: GoogleFonts.montserrat(
                               color: Colors.white, fontSize: pHeight * 0.025),
                         ),
+
                       ),
                     ),
 
@@ -86,58 +92,72 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
                       ),
                       onPressed: () {},
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: pHeight * 0.08,
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.6,
-                  width: MediaQuery.of(context).size.width,
-                  child: Image.asset(
-                    'assets/refer.png',
-                    scale: 3,
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Center(
-                    child: Text(
-                      'Refer a friend and earn coupon for \n      10% OFF upto \$ 100 on ride',
-                      style: GoogleFonts.montserrat(fontSize: pHeight * 0.02),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: pHeight * 0.05,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    color: Color.fromRGBO(179, 57, 51, 1),
-                  ),
-                  //UIColor(red: 179/255, green: 57/255, blue: 51/255)
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 15.0,
-                      bottom: 15.0,
-                      left: 40.0,
-                      right: 40.0,
-                    ),
-                    child: Text(
-                      'Refer Now',
-                      style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+
+    ],
+    ),
+        SizedBox(
+          height: pHeight*0.07,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Container(
+                child: Text('How long can i drive in a day?',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,fontSize: pHeight*0.022),),
+              ),
+              SizedBox(height: pHeight*0.02),
+              Container(
+                child: Text('You can driver continuously for 10 hrs maximum.',),
+              ),
+              SizedBox(
+                height: pHeight*0.06,
+              ),
+              Container(
+                child: Text('Do you provide multiple pickups or \ndrops?',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,fontSize: pHeight*0.022),),
+              ),
+              SizedBox(height: pHeight*0.02),
+              Container(
+                child: Text('Sure, we can arrange multiple pickups or drops \nfor your itinerary. Please let us know about all\n the details of your itinerary and we can make \nthe arrangements.',),
+              ),
+
+            ],
+          ),
+        ),
+
+              ],),
+    ),
+          Padding(
+            padding:  EdgeInsets.only(bottom: pHeight*0.035),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(height: pHeight*0.01,
+
+                  child: Divider(
+                    color: Colors.grey,
+                  ),),
+                Padding(
+                  padding: const EdgeInsets.only(right: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.call,
+                          color: Colors.green,
+                        ),
+                        onPressed: () {},
                       ),
-                    ),
+                      Text(
+                          'Support',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,fontSize: pHeight*0.023),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
+  ]),
+
+    );}
 }

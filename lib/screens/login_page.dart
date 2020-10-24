@@ -67,9 +67,12 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(fontSize: pHeight * 0.016),
             ),
             Spacer(),
-            Text(
-              'CONTINUE WITH MOBILE:',
-              style: TextStyle(fontSize: pHeight * 0.017),
+            Padding(
+              padding:  EdgeInsets.only(left: pWidth*0.12),
+              child: Text(
+                'CONTINUE WITH MOBILE:',
+                style: TextStyle(fontSize: pHeight * 0.017),
+              ),
             ),
             SizedBox(
               height: pHeight * 0.02,
@@ -81,8 +84,9 @@ class _LoginPageState extends State<LoginPage> {
                   width: pWidth * 0.1,
                 ),
                 Container(
+
                   width: pWidth * 0.15,
-                  height: pHeight * 0.05,
+                  height: pHeight * 0.065,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.blueGrey, width: 1),
@@ -98,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   alignment: Alignment.center,
                   width: pWidth * 0.6,
-                  height: pHeight * 0.05,
+                  height: pHeight * 0.065,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.blueGrey, width: 1),
                       borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -111,11 +115,12 @@ class _LoginPageState extends State<LoginPage> {
                         errorBorder: InputBorder.none,
                         disabledBorder: InputBorder.none,
                         contentPadding: EdgeInsets.only(
-                            left: pWidth * 0.02,
+                            left: pWidth * 0.035,
                             bottom: pHeight * 0.02,
-                            top: pHeight * 0.01,
+                            top: pHeight * 0.02,
                             right: pWidth * 0.02),
-                        hintText: 'Enter You Number'),
+                        hintText: 'Enter Mobile Number', hintStyle: TextStyle(color: Colors.black),),
+
                   ),
                 ),
                 SizedBox(
@@ -139,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Container(
                 alignment: Alignment.center,
                 width: pWidth * 0.8,
-                height: pHeight * 0.05,
+                height: pHeight * 0.06,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Colors.redAccent),
@@ -171,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: Text(
                     'Sign Up',
-                    style: TextStyle(fontSize: pHeight * 0.016),
+                    style: TextStyle(fontSize: pHeight * 0.016,fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CouponsScreen extends StatefulWidget {
   @override
@@ -13,15 +14,10 @@ class _CouponsScreenState extends State<CouponsScreen> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset(
-              'assets/bg_drawer.png',
-              height: pHeight * 0.1,
-              width: pWidth,
-              fit: BoxFit.cover,
-            ),
+          Container(
+
+            height: pHeight*0.17,
+            color: Color.fromRGBO(211, 56, 57, 1),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
@@ -31,7 +27,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: pHeight * 0.045,
+                  height: pHeight * 0.07,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,9 +44,8 @@ class _CouponsScreenState extends State<CouponsScreen> {
                     Container(
                       child: Center(
                         child: Text(
-                          'Coupons',
-                          style: TextStyle(
-                              color: Colors.white, fontSize: pHeight * 0.025),
+                          'Available Coupons',
+                          style:GoogleFonts.montserrat(color: Colors.white, fontSize: pHeight * 0.025,fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -63,6 +58,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
                     ),
                   ],
                 ),
+                SizedBox(height: pHeight*0.055),
                 Expanded(
                   child: ListView.builder(
                       itemCount: 12,
@@ -88,6 +84,7 @@ class Coupon extends StatelessWidget {
   Widget build(BuildContext context) {
     final pHeight = MediaQuery.of(context).size.height;
     final pWidth = MediaQuery.of(context).size.width;
+    Spacer();
     return Container(
       height: pHeight * 0.2,
       child: Padding(
@@ -113,7 +110,7 @@ class Coupon extends StatelessWidget {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: pWidth * 0.075,
+                  width: pWidth * 0.035,
                 ),
                 Column(
                   children: <Widget>[
@@ -146,7 +143,7 @@ class Coupon extends StatelessWidget {
                     Text(
                       'Welcome Offer',
                       style: TextStyle(
-                          fontSize: pHeight * 0.025, color: Colors.black),
+                          fontSize: pHeight * 0.02, color: Colors.black,fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: pHeight * 0.01,
@@ -154,10 +151,10 @@ class Coupon extends StatelessWidget {
                     Container(
                       width: pWidth * 0.62,
                       child: Text(
-                        'Avail 20% OFF on first 3 rides maximum of \$100',
+                        'Avail 20% OFF on first \n3 rides maximum of \$100',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: pHeight * 0.02, color: Colors.black),
+                            fontSize: pHeight * 0.015, color: Colors.black),
                       ),
                     ),
                     SizedBox(
@@ -167,7 +164,7 @@ class Coupon extends StatelessWidget {
                       children: <Widget>[
                         Text('Valid from\n26 Sep 2020'),
                         SizedBox(
-                          width: pWidth * 0.26,
+                          width: pWidth * 0.1,
                         ),
                         Text('Valid till\n26 Oct 2020'),
                       ],

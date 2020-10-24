@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:wetaxi/Screens/trip_started.dart';
+import 'package:wetaxi/screens/chat_page.dart';
 
 class CabBookedScreen extends StatefulWidget {
   @override
@@ -33,15 +34,10 @@ class _CabBookedScreenState extends State<CabBookedScreen> {
     double pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Stack(children: [
-        Positioned(
-          top: 0,
-          left: 0,
-          child: Image.asset(
-            'assets/bg_drawer.png',
-            height: pHeight * 0.2,
-            width: pWidth,
-            fit: BoxFit.cover,
-          ),
+        Container(
+
+          color: Color.fromRGBO(211, 57, 51, 1),
+          height: pHeight*0.2,
         ),
         Container(
           height: pHeight,
@@ -49,21 +45,44 @@ class _CabBookedScreenState extends State<CabBookedScreen> {
           child: Column(
             children: [
               SizedBox(height: pHeight * 0.03),
-              Container(
-                height: pHeight * 0.1,
-                color: Colors.transparent,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Cab Booking',
-                      style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: pHeight * 0.025),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
                     ),
-                  ],
-                ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Container(
+                    height: pHeight * 0.1,
+                    color: Colors.transparent,
+                    child: Row(
+
+
+                      children: [
+                        Text(
+                          'Your Driver is Arrived',
+                          style: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: pHeight * 0.025),
+                        ),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.notifications,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
               ),
               Container(
                 color: Colors.transparent,
@@ -365,37 +384,50 @@ class _CabBookedScreenState extends State<CabBookedScreen> {
                               ),
                             ],
                           ), // Circle,
-                          Column(
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Icon(
-                                    Icons.phone,
-                                    color: Colors.green,
-                                    size: pHeight * 0.045,
-                                  )),
-                              Text(
-                                'Call Driver',
-                                style: GoogleFonts.montserrat(
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                          InkWell(
+                            onTap: (){
+
+                            },
+                            child: Column(
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.phone,
+                                      color: Colors.green,
+                                      size: pHeight * 0.045,
+                                    )),
+                                Text(
+                                  'Call Driver',
+                                  style: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           ),
-                          Column(
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Icon(
-                                    Icons.chat,
-                                    color: Colors.blue,
-                                    size: pHeight * 0.045,
-                                  )),
-                              Text(
-                                'Chat',
-                                style: GoogleFonts.montserrat(
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                          InkWell(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ChatPage()));
+                            },
+                            child: Column(
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.chat,
+                                      color: Colors.blue,
+                                      size: pHeight * 0.045,
+                                    )),
+                                Text(
+                                  'Chat',
+                                  style: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           ),
                           Column(
                             children: [

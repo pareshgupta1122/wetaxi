@@ -13,6 +13,7 @@ class OTPScreen extends StatefulWidget {
 class _OTPScreenState extends State<OTPScreen> {
   @override
   Widget build(BuildContext context) {
+
     final pHeight = MediaQuery.of(context).size.height;
     final pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -39,7 +40,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
+                    padding: const EdgeInsets.only(left: 12.0),
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
@@ -60,7 +61,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     style: TextStyle(
                         color: Colors.black,
                         fontFamily: 'Roboto',
-                        fontSize: pHeight * 0.035),
+                        fontSize: pHeight * 0.030),
                   ),
                 ],
               ),
@@ -87,12 +88,14 @@ class _OTPScreenState extends State<OTPScreen> {
                 height: pHeight * 0.035,
               ),
               OTPTextField(
+
                 length: 4,
                 width: MediaQuery.of(context).size.width * 0.8,
                 fieldWidth: 60,
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(fontSize: 17,color: Colors.red),
                 textFieldAlignment: MainAxisAlignment.spaceAround,
                 fieldStyle: FieldStyle.underline,
+
                 onCompleted: (pin) {
                   print("Completed: " + pin);
                 },
@@ -114,13 +117,17 @@ class _OTPScreenState extends State<OTPScreen> {
                   SizedBox(
                     width: pWidth * 0.01,
                   ),
-                  Text(
-                    'Resend',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.black.withOpacity(0.75),
-                        fontFamily: 'Roboto',
-                        fontSize: pHeight * 0.02),
+                  InkWell(
+                    onTap: (){},
+                    child: Text(
+                      'Resend',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                          color: Colors.black.withOpacity(0.75),
+                          fontFamily: 'Roboto',
+                          fontSize: pHeight * 0.02),
+                    ),
                   ),
                 ],
               ),

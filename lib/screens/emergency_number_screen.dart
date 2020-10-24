@@ -17,18 +17,14 @@ class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
     final pHeight = MediaQuery.of(context).size.height;
     final pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset(
-              'assets/bg_drawer.png',
-              height: pHeight * 0.1,
-              width: pWidth,
-              fit: BoxFit.cover,
-            ),
+          Container(
+
+            height: pHeight*0.17,
+            color: Color.fromRGBO(211, 57, 51, 1),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
@@ -43,7 +39,15 @@ class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Spacer(flex: 2),
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
                     Container(
                       child: Center(
                         child: Text(
@@ -53,7 +57,7 @@ class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
                         ),
                       ),
                     ),
-                    Spacer(),
+                   
                     IconButton(
                       icon: Icon(
                         Icons.notifications,
@@ -145,7 +149,7 @@ class _EmergencyNumberScreenState extends State<EmergencyNumberScreen> {
                             contentPadding: EdgeInsets.only(
                                 left: pWidth * 0.02,
                                 bottom: pHeight * 0.015,
-                                top: pHeight * 0.02,
+                                top: pHeight * 0.03,
                                 right: pWidth * 0.02),
                             hintText: 'Enter Your Number'),
                       ),

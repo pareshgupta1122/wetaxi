@@ -31,15 +31,10 @@ class _TripStartedScreenState extends State<TripStartedScreen> {
     double pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Stack(children: [
-        Positioned(
-          top: 0,
-          left: 0,
-          child: Image.asset(
-            'assets/bg_drawer.png',
-            height: pHeight * 0.2,
-            width: pWidth,
-            fit: BoxFit.cover,
-          ),
+        Container(
+
+          color: Color.fromRGBO(211, 57, 51, 1),
+          height: pHeight*0.2,
         ),
         Container(
           height: pHeight,

@@ -9,48 +9,94 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final nameController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final emailController = TextEditingController();
   final mobileNumberController = TextEditingController();
+
 
   var contentPadding = EdgeInsets.only(left: SizeConfig.blockSizeWidth * 2);
 
   final _formKey = GlobalKey<FormState>();
-
+bool checkBoxValue= false;
   @override
   Widget build(BuildContext context) {
+    final pHeight = MediaQuery.of(context).size.height;
+    final pWidth = MediaQuery.of(context).size.width;
+
     @override
     void dispose() {
-      nameController.dispose();
+      firstNameController.dispose();
+      lastNameController.dispose();
       emailController.dispose();
       mobileNumberController.dispose();
       super.dispose();
     }
 
     Widget nameTextField() {
-      return TextFormField(
-        cursorColor: Colors.black,
-        controller: nameController,
-        keyboardType: TextInputType.text,
-        decoration: InputDecoration(
-            labelText: "Enter your Name",
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: const BorderRadius.all(
-                const Radius.circular(10.0),
-              ),
-            )),
+      return Column(
+        children: [
+          TextFormField(
+
+            cursorColor: Colors.black,
+            controller: firstNameController,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+
+                labelText: "First Name",
+                labelStyle: TextStyle(color: Colors.black),
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(
+                    left: pWidth * 0.3,
+                    bottom: pHeight * 0.02,
+                    top: pHeight * 0.02,
+                    right: pWidth * 0.02),
+                border: OutlineInputBorder(
+
+                  borderRadius: const BorderRadius.all(
+                    const Radius.circular(10.0),
+
+                  ),
+                )),
+          ),
+      SizedBox(height:pHeight*0.02 ),
+          TextFormField(
+            cursorColor: Colors.black,
+            controller: lastNameController,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+                labelText: "Last Name",
+                labelStyle: TextStyle(color: Colors.black),
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(
+                    left: pWidth * 0.3,
+                    bottom: pHeight * 0.02,
+                    top: pHeight * 0.02,
+                    right: pWidth * 0.02),
+                border: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                    const Radius.circular(10.0),
+                  ),
+                )),
+          ),
+        ],
       );
     }
-
+    SizedBox(height:pHeight*0.02 );
     Widget emailTextField() {
       return TextFormField(
         cursorColor: Colors.black,
         keyboardType: TextInputType.emailAddress,
         controller: emailController,
         decoration: InputDecoration(
-            labelText: "Enter your Email",
+            labelText: "Enter Email",
+            labelStyle: TextStyle(color: Colors.black),
             fillColor: Colors.white,
+            contentPadding: EdgeInsets.only(
+                left: pWidth * 0.3,
+                bottom: pHeight * 0.02,
+                top: pHeight * 0.02,
+                right: pWidth * 0.02),
             border: OutlineInputBorder(
               borderRadius: const BorderRadius.all(
                 const Radius.circular(10.0),
@@ -59,33 +105,62 @@ class _SignUpPageState extends State<SignUpPage> {
       );
     }
 
+
     Widget mobileNumberTextField() {
       return TextFormField(
+
         cursorColor: Colors.black,
         keyboardType: TextInputType.phone,
         controller: mobileNumberController,
         decoration: InputDecoration(
-            labelText: "Enter your Number",
+            hintText: "Enter Mobile Number",
             fillColor: Colors.white,
+            contentPadding: EdgeInsets.only(
+                left: pWidth * 0.04,
+                bottom: pHeight * 0.02,
+                top: pHeight * 0.02,
+                right: pWidth * 0.02),
+            hintStyle: TextStyle(color: Colors.black),
             border: OutlineInputBorder(
               borderRadius: const BorderRadius.all(
                 const Radius.circular(10.0),
               ),
             )),
+      );
+    }
+    Widget termsAndConditions(){
+
+      return Row(
+        children: [
+          Checkbox(
+            value: checkBoxValue,
+            onChanged: (bool value){
+              setState(() {
+                checkBoxValue=value;
+              });
+            },
+          ),
+          Text('I agree to the',style: TextStyle(fontSize: pHeight * 0.016),),
+          SizedBox(width: SizeConfig.blockSizeWidth*1),
+          InkWell(
+            child: Text('Terms And Conditions',style: TextStyle(color: Colors.blue,fontSize: pHeight * 0.016),),
+          ),
+        ],
       );
     }
 
     void _verifyData() {
       ApiHelper apiHelper = ApiHelper();
-      String name = nameController.text;
+      String lastName = lastNameController.text;
+      String firstName = firstNameController.text;
       String email = emailController.text;
       String stdCode = "91";
       String mobileNumber = mobileNumberController.text;
-      print('$name $email $stdCode $mobileNumber');
+      print('$firstName $lastName $email $stdCode $mobileNumber');
 
       Map register = {
-        "first_name": name,
-        "last_name": name,
+        "first_name": firstName,
+        "last_name": lastName,
         "std_code": stdCode,
         "mobile": mobileNumber
       };
@@ -108,7 +183,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Container(
           alignment: Alignment.center,
           width: SizeConfig.blockSizeWidth * 90,
-          height: SizeConfig.blockSizeHeight * 7.5,
+          height: SizeConfig.blockSizeHeight * 6.8,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               color: Colors.redAccent),
@@ -123,6 +198,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     SizeConfig().init(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: SizeConfig.blockSizeHeight * 100,
         width: SizeConfig.blockSizeWidth * 100,
@@ -142,7 +218,15 @@ class _SignUpPageState extends State<SignUpPage> {
               key: _formKey,
               child: Column(
                 children: [
-                  Spacer(),
+                  Padding(
+                    padding:  EdgeInsets.fromLTRB(0,SizeConfig.blockSizeHeight*2,SizeConfig.blockSizeWidth*85,0),
+                    child: InkWell(child: Icon(Icons.arrow_back,color:Colors.black),
+                    onTap: (){},
+                    ),
+                  ),
+                  SizedBox(
+                    height: SizeConfig.blockSizeHeight * 1.5,
+                  ),
                   Text(
                     'Sign Up',
                     style: TextStyle(fontSize: SizeConfig.blockSizeHeight * 3),
@@ -152,12 +236,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   Text(
                     'Enter your Sign Up details !',
-                    style: TextStyle(fontSize: SizeConfig.blockSizeHeight * 3),
+                    style: TextStyle(fontSize: SizeConfig.blockSizeHeight * 1.8),
                   ),
-                  Spacer(),
+                  SizedBox(
+                    height: SizeConfig.blockSizeHeight * 6,
+                  ),
                   nameTextField(),
                   SizedBox(
-                    height: SizeConfig.blockSizeHeight * 4,
+                    height: SizeConfig.blockSizeHeight * 2,
                   ),
                   emailTextField(),
                   SizedBox(
@@ -166,16 +252,20 @@ class _SignUpPageState extends State<SignUpPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
+                      Container(decoration: BoxDecoration(
+
+                          border: Border.all(color: Colors.blueGrey, width: 1),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
                         width: SizeConfig.blockSizeWidth * 15,
+                        height: SizeConfig.blockSizeHeight * 7,
                         child: Center(
                           child: TextField(
                               enabled: false,
                               decoration: InputDecoration(
                                   labelText: "+91",
                                   labelStyle: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black38),
+
+                                      color: Colors.black),
                                   border: OutlineInputBorder(
                                     borderRadius: const BorderRadius.all(
                                       const Radius.circular(10.0),
@@ -193,6 +283,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     ],
                   ),
                   Spacer(),
+                  SizedBox(height: pHeight*.10),
+                  termsAndConditions(),
                   verifyButton(),
                   Spacer()
                 ],

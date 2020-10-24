@@ -10,6 +10,19 @@ import 'package:wetaxi/Screens/coupons_screen.dart';
 import 'package:wetaxi/Screens/emergency_number_screen.dart';
 import 'package:wetaxi/Screens/fare_details.dart';
 import 'package:wetaxi/Screens/refer_and_earn_screen.dart';
+import 'package:wetaxi/constants/colour.dart';
+import 'package:wetaxi/constants/hexaColour.dart';
+import 'package:wetaxi/screens/driver_assigned.dart';
+import 'package:wetaxi/screens/edit_profile.dart';
+import 'package:wetaxi/screens/login_page.dart';
+import 'package:wetaxi/screens/lost_item.dart';
+import 'package:wetaxi/screens/paid_successful.dart';
+import 'package:wetaxi/screens/rating.dart';
+import 'package:wetaxi/screens/supportpage.dart';
+import 'package:wetaxi/screens/termsAndConditions.dart';
+import 'package:wetaxi/screens/trip_history.dart';
+
+import 'chat_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -74,257 +87,505 @@ class _HomeScreenState extends State<HomeScreen> {
             // key: _drawerKey,
             child: Container(
               height: pHeight,
-              color: Color(0xFF0D3A7E).withOpacity(0.7),
+              color: Colors.white54,
               child: ListView(
                 // Important: Remove any padding from the ListView.
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   DrawerHeader(
+
                     child: Container(
                         child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
+
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                                size: pWidth * 0.07,
+                              ),
+                            ),
+                            SizedBox(width: pWidth*.08),
                             Image.asset(
                               'assets/driver.png',
                               height: pHeight * 0.1,
                               fit: BoxFit.fill,
                             ),
+                            SizedBox(width: pWidth*.04),
                             Container(
                               height: pHeight * 0.15,
                               width: pWidth * 0.35,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Spacer(),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Icon(
-                                          Icons.arrow_back,
-                                          color: Colors.white,
-                                          size: pWidth * 0.07,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Spacer(flex: 3),
+
+                                  SizedBox(height: pHeight*0.01),
+
                                   Text(
                                     'Aviral Agarwal',
                                     style: GoogleFonts.montserrat(
                                         color: Colors.white,
-                                        fontSize: pHeight * 0.02),
+                                        fontSize: pHeight * 0.021),
                                   ),
-                                  Spacer(),
+
+                                  SizedBox(height: pHeight*0.025),
                                   Text(
-                                    '@email',
+                                    '@Mobile number',
                                     style: GoogleFonts.montserrat(
-                                        color: Colors.white.withOpacity(0.8),
-                                        fontSize: pHeight * 0.015),
+                                        color:
+                                            Colors.white.withOpacity(1),
+                                        fontSize: pHeight * 0.016),
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '@phone number',
-                                        style: GoogleFonts.montserrat(
-                                            color:
-                                                Colors.white.withOpacity(0.8),
-                                            fontSize: pHeight * 0.015),
-                                      ),
-                                      Spacer(),
-                                      Icon(
-                                        Icons.edit,
-                                        color: Colors.white,
-                                      )
-                                    ],
-                                  )
+
+
                                 ],
                               ),
-                            )
+                            ),
+                            SizedBox(width: pWidth*.1),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Icon(
+                                    Icons.notifications,
+                                    color: Colors.white,
+                                    size: pWidth * 0.07,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         )
                       ],
                     )),
                     decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/bg_drawer.png'),
-                            fit: BoxFit.fill)),
+                        color: Color.fromRGBO(211, 57, 51, 1),),
                   ),
-                  SizedBox(
-                    height: pHeight * 0.1,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 40),
-                          child: Icon(
-                            Icons.clear_all,
-                            color: Colors.white,
+
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal: pWidth*0.03),
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TripHistoryPage()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+
+
+
+
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 40),
+                            child: Icon(
+                              Icons.format_list_bulleted,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
                           ),
-                        ),
-                        Text(
-                          'All Trips',
-                          style: GoogleFonts.montserrat(color: Colors.white),
-                        ),
-                      ]),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EmergencyNumberScreen()));
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 40),
-                          child: Icon(
-                            Icons.contact_phone,
-                            color: Colors.white,
+                          Text(
+                            'All Trips',
+                            style: GoogleFonts.montserrat(color:HexColorUtils.getColorFromHex(Colours.background),),
                           ),
-                        ),
-                        Text(
-                          'Emergency Number',
-                          style: GoogleFonts.montserrat(color: Colors.white),
-                        ),
-                      ]),
-                    ),
-                  ),
-                  SizedBox(
-                    height: pHeight * 0.05,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CouponsScreen()));
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 40),
-                          child: Icon(
-                            Icons.card_giftcard,
-                            color: Colors.white,
+                          SizedBox(width: pWidth*0.44),
+                          Container(
+                            height: pHeight*0.03,
+                            decoration: BoxDecoration(
+                              color: HexColorUtils.getColorFromHex(Colours.arrow),
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: Icon(
+
+                              Icons.chevron_right,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Coupons',
-                          style: GoogleFonts.montserrat(color: Colors.white),
-                        ),
-                      ]),
+                        ]),
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ReferAndEarnScreen()));
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 40),
-                          child: Icon(
-                            Icons.stars,
-                            color: Colors.white,
+                    SizedBox(height: pHeight*0.01,
+                      width: pWidth*0.8,
+                      child: Divider(
+                        color: Colors.grey,
+                      ),),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EmergencyNumberScreen()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 40),
+                            child: Icon(
+                              Icons.group,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Refer and Earn',
-                          style: GoogleFonts.montserrat(color: Colors.white),
-                        ),
-                      ]),
-                    ),
-                  ),
-                  SizedBox(
-                    height: pHeight * 0.05,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 40),
-                          child: Icon(
-                            Icons.camera,
-                            color: Colors.white,
+                          Text(
+                            'Emergency Contacts',
+                            style: GoogleFonts.montserrat(color: HexColorUtils.getColorFromHex(Colours.background),),
                           ),
-                        ),
-                        Text(
-                          'Support',
-                          style: GoogleFonts.montserrat(color: Colors.white),
-                        ),
-                      ]),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 40),
-                          child: Icon(
-                            Icons.info_outline,
-                            color: Colors.white,
+                          SizedBox(width: pWidth*0.18),
+                          Container(
+                            height: pHeight*0.03,
+                            decoration: BoxDecoration(
+                              color: HexColorUtils.getColorFromHex(Colours.arrow),
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: Icon(
+
+                              Icons.chevron_right,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
                           ),
-                        ),
-                        Text(
-                          'About Us',
-                          style: GoogleFonts.montserrat(color: Colors.white),
-                        ),
-                      ]),
+                        ]),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: pHeight * 0.2,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 40),
-                          child: Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
+                    SizedBox(height: pHeight*0.01,
+                      width: pWidth*0.8,
+                      child: Divider(
+                        color: Colors.grey,
+                      ),),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CouponsScreen()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 40),
+                            child: Icon(
+                              Icons.card_giftcard,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Log Out',
-                          style: GoogleFonts.montserrat(color: Colors.white),
-                        ),
-                      ]),
+                          Text(
+                            'Coupons',
+                            style: GoogleFonts.montserrat(color: HexColorUtils.getColorFromHex(Colours.background),),
+                          ),
+                          SizedBox(width: pWidth*0.42),
+                          Container(
+                            height: pHeight*0.03,
+                            decoration: BoxDecoration(
+                              color: HexColorUtils.getColorFromHex(Colours.arrow),
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: Icon(
+
+                              Icons.chevron_right,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                        ]),
+                      ),
                     ),
-                  ),
+                    SizedBox(height: pHeight*0.01,
+                    width: pWidth*0.8,
+                    child: Divider(
+                      color: Colors.grey,
+                    ),),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditProfile()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 40),
+                            child: Icon(
+                              Icons.mode_edit,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                          Text(
+                            'Edit Profile',
+                            style: GoogleFonts.montserrat(color: HexColorUtils.getColorFromHex(Colours.background),),
+                          ),
+                          SizedBox(width: pWidth*0.37),
+                          Container(
+                            height: pHeight*0.03,
+                            decoration: BoxDecoration(
+                              color: HexColorUtils.getColorFromHex(Colours.arrow),
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: Icon(
+
+                              Icons.chevron_right,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+                    SizedBox(height: pHeight*.01),
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal: pWidth*0.03),
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color:Colors.white,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ReferAndEarnScreen()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 40),
+                            child: Icon(
+                              Icons.mail_outline,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                          Text(
+                            'Invite Friends',
+                            style: GoogleFonts.montserrat(color: HexColorUtils.getColorFromHex(Colours.background),),
+                          ),
+                          SizedBox(width: pWidth*0.33),
+                          Container(
+                            height: pHeight*0.03,
+                            decoration: BoxDecoration(
+                              color: HexColorUtils.getColorFromHex(Colours.arrow),
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: Icon(
+
+                              Icons.chevron_right,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                    SizedBox(height: pHeight*0.01,
+                      width: pWidth*0.8,
+                      child: Divider(
+                        color: Colors.grey,
+                      ),),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SupportPage()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 40),
+                            child: Icon(
+                              Icons.headset_mic,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                          Text(
+                            'Support & FAQ',
+                            style: GoogleFonts.montserrat(color: HexColorUtils.getColorFromHex(Colours.background),),
+                          ),
+                          SizedBox(width: pWidth*0.305),
+                          Container(
+                            height: pHeight*0.03,
+                            decoration: BoxDecoration(
+                              color: HexColorUtils.getColorFromHex(Colours.arrow),
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: Icon(
+
+                              Icons.chevron_right,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                    SizedBox(height: pHeight*0.01,
+                      width: pWidth*0.8,
+                      child: Divider(
+                        color: Colors.grey,
+                      ),),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RatingPage()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 40),
+                            child: Icon(
+                              Icons.stars,
+                              color:HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                          Text(
+                            'Rate Our App',
+                            style: GoogleFonts.montserrat(color: HexColorUtils.getColorFromHex(Colours.background),),
+                          ),
+                          SizedBox(width: pWidth*0.32),
+                          Container(
+                            height: pHeight*0.03,
+                            decoration: BoxDecoration(
+                              color: HexColorUtils.getColorFromHex(Colours.arrow),
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: Icon(
+
+                              Icons.chevron_right,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                    SizedBox(height: pHeight*0.01,
+                      width: pWidth*0.8,
+                      child: Divider(
+                        color: Colors.grey,
+                      ),),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TermsAndConditionPage()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 40),
+                            child: Icon(
+                              Icons.verified_user,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                          Text(
+                            'Terms & Conditions',
+                            style: GoogleFonts.montserrat(color:HexColorUtils.getColorFromHex(Colours.background), ),
+                          ),
+                          SizedBox(width: pWidth*0.21),
+                          Container(
+                            height: pHeight*0.03,
+                            decoration: BoxDecoration(
+                              color:HexColorUtils.getColorFromHex(Colours.arrow),
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: Icon(
+
+                              Icons.chevron_right,
+                              color:  HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                    SizedBox(height: pHeight*0.01,
+                      width: pWidth*0.8,
+                      child: Divider(
+                        color: Colors.grey,
+                      ),),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 40),
+                            child: Icon(
+                              Icons.arrow_forward,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+
+                          Text(
+                            'Log Out',
+                            style: GoogleFonts.montserrat(color: HexColorUtils.getColorFromHex(Colours.background),),
+                          ),
+                          SizedBox(width: pWidth*0.435),
+                          Container(
+                            height: pHeight*0.03,
+                            decoration: BoxDecoration(
+                              color: HexColorUtils.getColorFromHex(Colours.arrow),
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: Icon(
+
+                              Icons.chevron_right,
+                              color: HexColorUtils.getColorFromHex(Colours.background),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
+
+
+
+
+
+
+
+
                 ],
               ),
             ),
@@ -388,125 +649,115 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
-                    height: pHeight * 0.05,
-                    child: Row(
+                    height: pHeight * 0.14,
+                    child: Column(
                       children: [
-                        SizedBox(
-                          width: pWidth * 0.025,
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: pWidth * 0.025,
+                            ),
+                            Icon(
+                              Icons.location_on,
+                              color: Colors.green,
+                            ),
+                            SizedBox(
+                              width: pWidth * 0.025,
+                            ),
+                            Container(
+                              width: 1,
+                              height: pHeight * 0.03,
+                              color: Colors.grey,
+                            ),
+                            Container(
+                              width: pWidth * 0.55,
+                              child: TextField(
+                                cursorColor: Colors.black,
+                                decoration: new InputDecoration(
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    enabledBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    disabledBorder: InputBorder.none,
+                                    contentPadding: EdgeInsets.only(
+                                        left: pWidth * 0.02,
+                                        bottom: pHeight * 0.015,
+                                        top: pHeight * 0.02,
+                                        right: pWidth * 0.02),
+                                    hintText: 'Go from?'),
+                              ),
+                            ),
+                            Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            ),
+                          ],
                         ),
-                        Icon(
-                          Icons.location_on,
-                          color: Colors.green,
-                        ),
-                        SizedBox(
-                          width: pWidth * 0.025,
-                        ),
-                        Container(
-                          width: 1,
-                          height: pHeight * 0.03,
-                          color: Colors.grey,
-                        ),
-                        Container(
-                          width: pWidth * 0.55,
-                          child: TextField(
-                            cursorColor: Colors.black,
-                            decoration: new InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                                contentPadding: EdgeInsets.only(
-                                    left: pWidth * 0.02,
-                                    bottom: pHeight * 0.015,
-                                    top: pHeight * 0.02,
-                                    right: pWidth * 0.02),
-                                hintText: 'Go from?'),
-                          ),
-                        ),
-                        Icon(
-                          Icons.favorite,
-                          color: Colors.red,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: pHeight * 0.02,
-                  ),
-                  Container(
-                    width: pWidth * 0.8,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    height: pHeight * 0.05,
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: pWidth * 0.025,
-                        ),
-                        Icon(
-                          Icons.flag,
-                          color: Colors.red,
-                        ),
-                        SizedBox(
-                          width: pWidth * 0.025,
-                        ),
-                        Container(
-                          width: 1,
-                          height: pHeight * 0.03,
-                          color: Colors.grey,
-                        ),
-                        Container(
-                          width: pWidth * 0.55,
-                          child: TextField(
-                            cursorColor: Colors.black,
-                            decoration: new InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                                contentPadding: EdgeInsets.only(
-                                    left: pWidth * 0.02,
-                                    bottom: pHeight * 0.015,
-                                    top: pHeight * 0.02,
-                                    right: pWidth * 0.02),
-                                hintText: 'Go to?'),
-                          ),
-                        ),
-                        Icon(
-                          Icons.add,
-                          color: Colors.purple,
+                        SizedBox(height: pHeight*0.01,
+                          width: pWidth*0.6,
+                          child: Divider(
+                            color: Colors.grey,
+                          ),),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: pWidth * 0.025,
+                            ),
+                            Icon(
+                              Icons.flag,
+                              color: Colors.red,
+                            ),
+                            SizedBox(
+                              width: pWidth * 0.025,
+                            ),
+                            Container(
+                              width: 1,
+                              height: pHeight * 0.03,
+                              color: Colors.grey,
+                            ),
+                            Container(
+                              width: pWidth * 0.55,
+                              child: TextField(
+                                cursorColor: Colors.black,
+                                decoration: new InputDecoration(
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    enabledBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    disabledBorder: InputBorder.none,
+                                    contentPadding: EdgeInsets.only(
+                                        left: pWidth * 0.02,
+                                        bottom: pHeight * 0.015,
+                                        top: pHeight * 0.02,
+                                        right: pWidth * 0.02),
+                                    hintText: 'Go to?'),
+                              ),
+                            ),
+                            Icon(
+                              Icons.add,
+                              color: Colors.purple,
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
+
+
                   Spacer(),
                   Container(
                     width: pWidth,
-                    height: pHeight * 0.1,
+                    height: pHeight * 0.12,
                     child: Stack(
                       children: [
                         Container(
-                          width: pWidth,
-                          child: Image.asset(
-                            'assets/bottom_bar_bg.png',
-                            fit: BoxFit.fill,
-                          ),
+
+                          color: Color.fromRGBO(211, 57, 51, 1),
+                          height: pHeight*0.17,
                         ),
                         Container(
                           width: pWidth,
-                          height: pHeight * 0.1,
+                          height: pHeight * 0.12,
                           color: Colors.red.withOpacity(0.5),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
